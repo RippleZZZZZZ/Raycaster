@@ -3,7 +3,7 @@
 #include <format>
 
 void initWindow(Window& window) {
-	window.window = SDL_CreateWindow("raycaster", window.width, window.height, SDL_WINDOW_HIGH_PIXEL_DENSITY | SDL_WINDOW_RESIZABLE);
+	window.window = SDL_CreateWindow("raycaster", window.width, window.height, SDL_WINDOW_HIGH_PIXEL_DENSITY | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALWAYS_ON_TOP);
 
 	if (!window.window) {
 		std::cout << "failed to init window!\n";

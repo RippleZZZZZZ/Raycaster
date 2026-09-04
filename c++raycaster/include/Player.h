@@ -13,6 +13,7 @@ struct Player {
 	Player(float x, float y) : x(x), y(y) {};
 };
 
+void createRayAngles(Player& player);
 void rotatePlayer(Player& player);
 void drawPlayer(Renderer& renderer, Player& player);
-void updatePlayer(Window& window, Player& player, Renderer& renderer);
+void updatePlayer(Window& window, Player& player, Renderer& renderer, int map[][15]);

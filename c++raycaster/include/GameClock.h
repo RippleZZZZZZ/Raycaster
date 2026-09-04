@@ -8,4 +8,5 @@ struct GameClock {
 	float deltaTime = 0;
 };
 
-void tick(GameClock clock);
+void tick(GameClock& clock);
+void getFPS(GameClock& clock);

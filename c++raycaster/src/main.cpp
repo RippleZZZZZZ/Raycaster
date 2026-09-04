@@ -15,7 +15,7 @@ static float offsetY = (float)window.height / 2;
 
 static constexpr int mapWidth = 15;
 static constexpr int mapHeight = 15;
-static int map[mapHeight][mapWidth] = {
+static int map[mapWidth][mapHeight] = {
 	1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 	1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 	1, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
@@ -23,7 +23,7 @@ static int map[mapHeight][mapWidth] = {
 	1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 1,
 	1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 	1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-	1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+	1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1,
 	1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 	1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 1,
 	1, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
@@ -55,12 +55,12 @@ static void draw() {
 	clearRenderer(renderer);
 	drawMap();
 	drawPlayer(renderer, player);
-	updatePlayer(window, player, renderer);
+	updatePlayer(window, player, renderer, map);
 	presentRenderer(renderer);
 }
 
 static void update() {
-	updatePlayer(window, player, renderer);
+	
 }
 
 int main() {
@@ -69,6 +69,8 @@ int main() {
 	GameClock clock;
 
 	bool running = true;
+
+	createRayAngles(player);
 
 	SDL_Event event;
 	while (running) {
@@ -86,6 +88,7 @@ int main() {
 		tick(clock);
 		draw();
 		rotatePlayer(player);
+		getFPS(clock);
 	}
 
 	destoryWindow(window);
